@@ -41,40 +41,36 @@ class _BottomNavigationWigetState extends State<BottomNavigationWiget> {
         children: const [HomeScreen(), SearchScreen(), Messages(), Profile()],
       ),
       bottomNavigationBar: Container(
-        height: 80,
+        height: 70,
         margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(40)),
           child: BottomNavigationBar(
             backgroundColor: Colors.black,
-            selectedItemColor: Colors.white,
+            selectedItemColor: Colors.orange,
+            unselectedItemColor: Colors.white,
             type: BottomNavigationBarType.fixed,
-            showSelectedLabels: true,
-            showUnselectedLabels: true,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.home,
-                    color: Colors.white,
                   ),
                   label: 'Home'),
               BottomNavigationBarItem(
-                  backgroundColor: Colors.white,
                   icon: Icon(
                     Icons.search,
-                    color: Colors.white,
                   ),
                   label: 'Search'),
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.message,
-                    color: Colors.white,
                   ),
                   label: 'Message'),
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.person,
-                    color: Colors.white,
                   ),
                   label: 'Profile')
             ],
