@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -7,9 +8,9 @@ class AvatarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
-    // ignore: avoid_print
-    // print(user!.photoURL.toString());
+
     if (user!.photoURL.toString() == "null") {
+      
       return ListView(
         children: <Widget>[
           Padding(

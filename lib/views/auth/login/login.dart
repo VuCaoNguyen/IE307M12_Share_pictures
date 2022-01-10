@@ -35,6 +35,7 @@ class _LoginState extends State<Login> {
           email: email,
           password: password,
         );
+
         Navigator.of(context).pushReplacementNamed("/home");
       } else {
         userCredential = await _auth.createUserWithEmailAndPassword(
@@ -48,6 +49,14 @@ class _LoginState extends State<Login> {
           'username': username,
           'email': email,
         });
+        final user = FirebaseAuth.instance.currentUser;
+        FirebaseFirestore.instance
+            .collection('user')
+            .doc(user!.uid)
+            .get()
+            .then((value) {
+          user.updateDisplayName(value["username"]);
+        });
         Navigator.of(context).pushReplacementNamed("/home");
       }
     } on PlatformException catch (err) {
@@ -58,6 +67,7 @@ class _LoginState extends State<Login> {
       }
       ScaffoldMessenger.of(ctx).showSnackBar(
         SnackBar(
+          duration: Duration(seconds: 2),
           content: Text(message),
           backgroundColor: Theme.of(ctx).errorColor,
         ),
@@ -66,8 +76,11 @@ class _LoginState extends State<Login> {
         _isLoading = false;
       });
     } catch (err) {
-      // ignore: avoid_print
-      print(err);
+      ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+        duration: Duration(seconds: 2),
+        content: Text("Login fail"),
+        backgroundColor: Theme.of(ctx).errorColor,
+      ));
       setState(() {
         _isLoading = false;
       });

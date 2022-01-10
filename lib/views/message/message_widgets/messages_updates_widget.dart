@@ -41,7 +41,7 @@ class _UpdatesState extends State<Updates> {
                       onPresss: () {
                         setState(() {
                           page = page + 1;
-                          print(page);
+                         
                         });
                       },
                     ),

@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:pinterest/views/home/home_widgets/listview_home.dart';
 
 class ImagesRecommendTopicWidget extends StatefulWidget {
-  ImagesRecommendTopicWidget({Key? key, required this.query, this.focus = false})
+  ImagesRecommendTopicWidget(
+      {Key? key, required this.query, this.focus = false})
       : super(key: key);
   final String query;
   bool focus;

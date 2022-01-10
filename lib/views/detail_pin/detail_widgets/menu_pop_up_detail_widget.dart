@@ -21,7 +21,7 @@ class MenuPopUpDetailWidget extends StatefulWidget {
 class _MenuPopUpDetailWidgetState extends State<MenuPopUpDetailWidget> {
   Future<void> downloadImage() async {
     var status = await Permission.storage.request();
-    print(widget.name);
+    
     if (status.isGranted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -35,10 +35,8 @@ class _MenuPopUpDetailWidgetState extends State<MenuPopUpDetailWidget> {
               .load(widget.urlImage))
           .buffer
           .asUint8List();
-      final result = await ImageGallerySaver.saveImage(
-          Uint8List.fromList(bytes),
-          quality: 60,
-          name: widget.name);
+      await ImageGallerySaver.saveImage(Uint8List.fromList(bytes),
+          quality: 60, name: widget.name);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           behavior: SnackBarBehavior.floating,
@@ -65,8 +63,7 @@ class _MenuPopUpDetailWidgetState extends State<MenuPopUpDetailWidget> {
     );
     var file = await DefaultCacheManager().getSingleFile(url);
 
-    final bool result =
-        await WallpaperManager.setWallpaperFromFile(file.path, location);
+    await WallpaperManager.setWallpaperFromFile(file.path, location);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         behavior: SnackBarBehavior.floating,
@@ -75,7 +72,6 @@ class _MenuPopUpDetailWidgetState extends State<MenuPopUpDetailWidget> {
         duration: Duration(seconds: 2),
       ),
     );
-    print(result);
   }
 
   void _showPopupMenu() async {

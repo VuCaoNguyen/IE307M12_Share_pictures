@@ -13,7 +13,7 @@ class Message extends StatelessWidget {
           if (index == 0) {
             return ListTile(
               onTap: () {
-                print("new message");
+             
               },
               leading: CircleAvatar(
                 backgroundColor: Colors.redAccent,
@@ -34,7 +34,7 @@ class Message extends StatelessWidget {
           }
           return ListTile(
             onTap: () {
-              print(index);
+            
             },
             leading: CircleAvatar(
               backgroundColor: Colors.grey[700],

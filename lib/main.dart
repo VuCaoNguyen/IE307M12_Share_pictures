@@ -19,7 +19,7 @@ void main() async {
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
-  final _appTitle = 'Pixabay Photos App';
+  final _appTitle = 'Unsplash';
 
   // This widget is the root of your application.
   @override

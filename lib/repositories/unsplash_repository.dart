@@ -24,7 +24,6 @@ class UnsplashRepositories {
         "client_id": api,
       },
     );
-    print("Search $keyword--- $page ----- $perPage");
     var responseApi = await http.get(url);
     if (responseApi.statusCode == 200) {
       var resJSON = json.decode(responseApi.body);
